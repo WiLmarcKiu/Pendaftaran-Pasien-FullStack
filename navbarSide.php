@@ -6,16 +6,16 @@
                 // mendapatkan id_admin yang login
                 $id_admin = $_SESSION["admin"]["id_admin"];
 
-                $ambil = $koneksi->query("SELECT * FROM admin WHERE id_admin ='$id_admin'");
+                $ambil = $koneksi->query("SELECT * FROM tb_admin WHERE id_admin ='$id_admin'");
                 $pecah = $ambil->fetch_assoc();
                 ?>
                 <div class="avatar-sm float-left mr-2">
-                    <img src="foto_admin/<?php echo $pecah["foto"]; ?>" alt="..." class="avatar-img rounded-circle">
+                    <img src="img_admin/<?php echo $pecah["foto"]; ?>" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a href="dataAdmin.php">
                         <span>
-                            <?php echo $_SESSION['admin']['nama']; ?>
+                            <?php echo $_SESSION['admin']['username']; ?>
                             <span class="user-level">Administrator</span>
                         </span>
                     </a>
@@ -35,33 +35,15 @@
                     <h4 class="text-section">Daftar Menu</h4>
                 </li>
                 <li class="nav-item">
-                    <a href="daftarPegawai.php">
-                        <i class="fas fa-user-tie"></i>
-                        <p>Pegawai</p>
+                    <a href="daftarPasien.php">
+                        <i class="fas fa-users"></i>
+                        <p>Daftar Pasien</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="daftarPangkat.php">
-                        <i class="fas fa-medal"></i>
-                        <p>Pangkat Pegawai</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="daftarPensiun.php">
-                        <i class="fas fa-user-slash"></i>
-                        <p>Pensiun</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="daftarGaji.php">
-                        <i class="fas fa-dollar-sign"></i>
-                        <p>Gaji</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="daftarMutasi.php">
-                        <i class="fas fa-recycle"></i>
-                        <p>Mutasi</p>
+                    <a href="diagnosaPasien.php">
+                        <i class="fas fa-stethoscope"></i>
+                        <p>Diagnosa Pasien</p>
                     </a>
                 </li>
                 <li class="nav-item">

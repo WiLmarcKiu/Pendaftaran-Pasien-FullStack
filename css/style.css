@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../img/loginbg.jpg);
+    background-size: cover;
+    background-position: center;
+    color: #000;
+}
+
+.login-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, .4);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    backdrop-filter: blur(20px);
+}
+
+form h1 {
+    text-align: center;
+    color: #057FF9;
+    padding-bottom: .6rem;
+}
+
+form p {
+    margin-top: 3px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+form .form-group {
+    margin-top: 20px;
+    position: relative;
+}
+
+form .form-group input {
+    border: 1px solid rgba(255, 255, 255, .2);
+    outline: none;
+    background-color: transparent;
+    padding: 10px 10px;
+    padding-left: 35px;
+    /* text-transform: capitalize; */
+    font-size: 15px;
+    box-shadow: inset 0 0 25px rgba(255, 255, 255, .2);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+form .form-group input::placeholder {
+    color: #666;
+    font-size: 13px;
+}
+
+form .form-group:not(:nth-child(5)) input {
+    width: 100%;
+}
+
+form .form-group i {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+form .form-group label {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+form .form-group input[type="submit"] {
+    background: #057FF9;
+    color: #FFFFFF;
+    padding: 8px 10px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    border: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+}
+
+form .form-group input[type="submit"]:hover {
+    background: #FFFFFF;
+    color: #000000;
+    cursor: pointer;
+}
+
+form .form-group:last-child {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+form .form-group a#daftar {
+    color: #000;
+    font-size: .8rem;
+}
+
+form .form-group a#daftar:hover {
+    text-decoration: underline;
+    color: #057FF9;
+}
+
+form .form-group input[type="checkbox"] {
+    content: '';
+    width: 15px;
+    height: 15px;
+    border: none;
+    outline: none;
+}
+
+form .form-group input#email:invalid, 
+form .form-group input#email:required:invalid {
+    border: none;
+    outline: .3px solid #ff0101;
+}
+
+form .form-group input#pass:invalid,
+form .form-group input#pass:required:invalid {
+    border: none;
+    outline: .3px solid #ff0101;
+}
+
+form .form-group input#remember-me:invalid,
+form .form-group input#remember-me:required:invalid {
+    border: none;
+    outline: .3px solid #ff0101;
+}
+
+form .form-group input#email:valid,
+form .form-group input#email:required:valid {
+    border: none;
+    outline: .3px solid #3AD66E;
+}
+
+form .form-group input#pass:valid,
+form .form-group input#pass:required:valid {
+    border: none;
+    outline: .3px solid #3AD66E;
+}
+
+form .form-group input#remember-me:valid,
+form .form-group input#remember-me:required:valid {
+    border: none;
+    outline: inherit;
+}
+

@@ -103,7 +103,7 @@ include 'koneksi.php';
                         // mendapatkan id_admin yang login
                         $id_admin = $_SESSION["admin"]["id_admin"];
 
-                        $ambil = $koneksi->query("SELECT * FROM admin WHERE id_admin ='$id_admin'");
+                        $ambil = $koneksi->query("SELECT * FROM tb_admin WHERE id_admin ='$id_admin'");
                         $pecah = $ambil->fetch_assoc();
                         ?>
                         <div class="col-md-4">
@@ -111,14 +111,14 @@ include 'koneksi.php';
                                 <div class="card-header" style="background-image: url('assets/img/blogpost.jpg'); height: 156px;">
                                     <div class="profile-picture">
                                         <div class="avatar avatar-xl">
-                                            <img src="foto_admin/<?php echo $pecah["foto"]; ?>" alt="..." class="avatar-img rounded-circle">
+                                            <img src="img_admin/<?php echo $pecah["foto"]; ?>" alt="..." class="avatar-img rounded-circle">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="user-profile text-center">
                                         <div class="name">Profil Admin</div>
-                                        <div class="job"><?php echo $_SESSION['admin']['nama']; ?></div>
+                                        <div class="job"><?php echo $_SESSION['admin']['nama_lengkap']; ?></div>
                                         <div class="job">Administrator</div>
                                         <div class="desc"><?php echo $_SESSION['admin']['email']; ?></div>
                                     </div>
@@ -129,13 +129,13 @@ include 'koneksi.php';
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="dataAdmin.php" method="POST">
+                                    <form action="dataAdmin.php" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <div class="input-icon">
                                                 <span class="input-icon-addon">
                                                     <i class="fa fa-user"></i>
                                                 </span>
-                                                <input type="text" class="form-control" value="<?php echo $_SESSION['admin']['nama']; ?>">
+                                                <input type="text" class="form-control" value="<?php echo $_SESSION['admin']['nama_lengkap']; ?>" name="nama_lengkap">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -143,7 +143,7 @@ include 'koneksi.php';
                                                 <span class="input-icon-addon">
                                                     <i class="fa fa-envelope"></i>
                                                 </span>
-                                                <input type="email" class="form-control" value="<?php echo $_SESSION['admin']['email']; ?>">
+                                                <input type="email" class="form-control" value="<?php echo $_SESSION['admin']['email']; ?>" name="email">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -151,7 +151,7 @@ include 'koneksi.php';
                                                 <span class="input-icon-addon">
                                                     <i class="fa fa-lock"></i>
                                                 </span>
-                                                <input type="text" class="form-control" value="<?php echo $_SESSION['admin']['password']; ?>">
+                                                <input type="text" class="form-control" value="<?php echo $_SESSION['admin']['password']; ?>" name="password">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -159,7 +159,7 @@ include 'koneksi.php';
                                                 <span class="input-icon-addon">
                                                     <i class="fa fa-camera"></i>
                                                 </span>
-                                                <input type="file" class="form-control">
+                                                <input type="file" class="form-control" name="foto">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -167,6 +167,33 @@ include 'koneksi.php';
                                         </div>
 
                                     </form>
+
+                                    <?php
+                                    if (isset($_POST['ubah'])) {
+
+                                        $namafoto = $_FILES['foto']['name'];
+                                        $lokasifoto = $_FILES['foto']['tmp_name'];
+
+                                        // jika foto dirubah
+                                        if (!empty($lokasifoto)) {
+                                            move_uploaded_file($lokasifoto, "img_admin/$namafoto");
+                                            $sql = "UPDATE tb_admin SET nama_lengkap = '$_POST[nama_lengkap]',email = '$_POST[email]',password = '$_POST[password]',foto = '$namafoto'";
+                                        } else {
+                                            $sql = "UPDATE tb_admin SET nama_lengkap = '$_POST[nama_lengkap]',email = '$_POST[email]',password = '$_POST[password]'";
+                                        }
+
+                                        $koneksi->query($sql);
+                                        if ($koneksi) {
+
+                                            echo "<script>alert('Data Berhasil Diubah');</script>";
+                                            echo "<script>location='dataAdmin.php';</script>";
+                                        } else {
+                                            echo "<script>alert('Data Gagal Diubah');</script>";
+                                            echo "<script>history.back();</script>";
+                                        }
+                                    }
+                                    ?>
+
                                 </div>
                             </div>
                         </div>

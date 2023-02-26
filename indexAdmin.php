@@ -12,7 +12,7 @@ include 'koneksi.php';
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>SIMPEG</title>
+    <title>SIRPAS</title>
     <meta content='width=device-width, initial-scale=1, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="assets/img/icon.ico" type="image/x-icon" />
 
@@ -52,7 +52,7 @@ include 'koneksi.php';
                 <a href="indexAdmin.php" class="logo">
                     <!-- <img src="assets/img/icon.png" alt="navbar brand" class="navbar-brand"> -->
                     <b>
-                        <p class="navbar-brand text-align-center" style="font-size: 20px; font-style: italic; color: #FFF; letter-spacing: 8px; ">SIMPEG</p>
+                        <p class="navbar-brand text-align-center" style="font-size: 20px; font-style: italic; color: #FFF; letter-spacing: 8px; "><i class="fas fa-stethoscope"></i> SIRPAS</p>
                     </b>
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,31 +84,31 @@ include 'koneksi.php';
                     <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
-                                <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-                                <h5 class="text-white op-7 mb-2">Sistem Informasi Kepegawaian Dinas Kelautan dan Perikanan Provinsi NTT</h5>
+                                <h2 class="text-white pb-2 fw-bold"><i class="fas fa-home"></i> Dashboard</h2>
+                                <h5 class="text-white op-7 mb-2" style="letter-spacing: 1px;">Sistem Registrasi Pasien (SIRPAS) Klinik Pendidikan Prodi Kesehatan Gigi Kupang .</h5>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="page-inner">
                     <div class="row">
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-6">
                             <div class="card card-stats card-primary card-round">
-                                <a href="daftarPegawai.php" style="text-decoration: none;">
+                                <a href="daftarPasien.php" style="text-decoration: none;">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-5">
+                                            <div class="col-6">
                                                 <div class="icon-big text-center">
-                                                    <i class="icon-user"></i>
+                                                    <i class="fas fa-users"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-7 col-stats">
+                                            <div class="col-6 col-stats">
                                                 <div class="numbers">
                                                     <?php
-                                                    $data_pegawai = mysqli_query($koneksi, "SELECT * FROM pegawai");
+                                                    $data_pegawai = mysqli_query($koneksi, "SELECT * FROM tb_daftar_pasien");
                                                     $jumlah_pegawai = mysqli_num_rows($data_pegawai);
                                                     ?>
-                                                    <p class="card-category">Pegawai</p>
+                                                    <p class="card-category">Daftar Pasien</p>
                                                     <h4 class="card-title"><?php echo "$jumlah_pegawai"; ?></h4>
                                                 </div>
                                             </div>
@@ -117,99 +117,24 @@ include 'koneksi.php';
                                 </a>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-6">
                             <div class="card card-stats card-info card-round">
-                                <a href="daftarPangkat.php" style="text-decoration: none;">
+                                <a href="diagnosaPasien.php" style="text-decoration: none;">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-5">
+                                            <div class="col-6">
                                                 <div class="icon-big text-center">
-                                                    <i class="icon-badge"></i>
+                                                    <i class="fas fa-stethoscope"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-7 col-stats">
+                                            <div class="col-6 col-stats">
                                                 <div class="numbers">
                                                     <?php
-                                                    $data_pangkat = mysqli_query($koneksi, "SELECT * FROM pangkat");
+                                                    $data_pangkat = mysqli_query($koneksi, "SELECT * FROM tb_diagnosa_pasien");
                                                     $jumlah_pangkat = mysqli_num_rows($data_pangkat);
                                                     ?>
-                                                    <p class="card-category">Pangkat Pegawai</p>
+                                                    <p class="card-category">Diagnosa Pasien</p>
                                                     <h4 class="card-title"><?php echo "$jumlah_pangkat"; ?></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card card-stats card-success card-round">
-                                <a href="daftarPensiun.php" style="text-decoration: none;">
-                                    <div class="card-body ">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                <div class="icon-big text-center">
-                                                    <i class="icon-user-unfollow"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-7 col-stats">
-                                                <div class="numbers">
-                                                    <?php
-                                                    $data_pensiun = mysqli_query($koneksi, "SELECT * FROM pensiun");
-                                                    $jumlah_pensiun = mysqli_num_rows($data_pensiun);
-                                                    ?>
-                                                    <p class="card-category">Pensiun</p>
-                                                    <h4 class="card-title"><?php echo "$jumlah_pensiun"; ?></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card card-stats card-secondary card-round">
-                                <a href="daftarGaji.php" style="text-decoration: none;">
-                                    <div class="card-body ">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                <div class="icon-big text-center">
-                                                    <i class="icon-credit-card"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-7 col-stats">
-                                                <div class="numbers">
-                                                    <?php
-                                                    $data_gaji = mysqli_query($koneksi, "SELECT * FROM gaji");
-                                                    $jumlah_gaji = mysqli_num_rows($data_gaji);
-                                                    ?>
-                                                    <p class="card-category">Gaji</p>
-                                                    <h4 class="card-title"><?php echo "$jumlah_gaji"; ?></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="card card-stats card-warning card-round">
-                                <a href="daftarMutasi.php" style="text-decoration: none;">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                <div class="icon-big text-center">
-                                                    <i class="icon-refresh"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-7 col-stats">
-                                                <div class="numbers">
-                                                    <?php
-                                                    $data_mutasi = mysqli_query($koneksi, "SELECT * FROM mutasi");
-                                                    $jumlah_mutasi = mysqli_num_rows($data_mutasi);
-                                                    ?>
-                                                    <p class="card-category">Mutasi</p>
-                                                    <h4 class="card-title"><?php echo "$jumlah_mutasi"; ?></h4>
                                                 </div>
                                             </div>
                                         </div>

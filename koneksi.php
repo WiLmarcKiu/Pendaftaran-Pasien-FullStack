@@ -2,4 +2,4 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-$koneksi = new mysqli("localhost", "root", "", "simpeg");
+$koneksi = new mysqli("localhost", "root", "", "db_gigi");
